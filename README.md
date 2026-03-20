@@ -2,7 +2,7 @@
 
 **Language / 語言:** English | [繁體中文](README.zh-TW.md) | [简体中文](README.zh-CN.md)
 
-A [mihomo (Clash.Meta)](https://github.com/MetaCubeX/mihomo) configuration template for [Clash Verge Rev](https://github.com/clash-verge-rev/clash-verge-rev) that split-tunnels Twitter/X and overseas AI services through an [IPRoyal](https://iproyal.com) residential proxy while sending all other traffic direct.
+A [mihomo (Clash.Meta)](https://github.com/MetaCubeX/mihomo) configuration template for [Clash Verge Rev](https://github.com/clash-verge-rev/clash-verge-rev) that split-tunnels Twitter/X and overseas AI services through an [IPRoyal](https://iproyal.com/?r=jackyyyso) residential proxy while sending all other traffic direct.
 
 ---
 
@@ -27,7 +27,7 @@ Only the services you need proxied go through IPRoyal — your local and general
 ## Prerequisites
 
 - **[Clash Verge Rev](https://github.com/clash-verge-rev/clash-verge-rev)** installed on your system
-- An **[IPRoyal](https://iproyal.com)** account with an active Residential Proxies subscription
+- An **[IPRoyal](https://iproyal.com/?r=jackyyyso)** account with an active Residential Proxies subscription
 
 ---
 
@@ -48,7 +48,7 @@ Go to this repository on GitHub, click `mihomo-template.yaml`, then click the **
 
 ### Step 2: Get Your IPRoyal Credentials
 
-1. Log in to your [IPRoyal dashboard](https://iproyal.com)
+1. Log in to your [IPRoyal dashboard](https://iproyal.com/?r=jackyyyso)
 2. Navigate to **Residential Proxies → Proxy List**
 3. Select your desired country/location
 4. Note down the following five values:

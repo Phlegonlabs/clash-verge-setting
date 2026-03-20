@@ -2,7 +2,7 @@
 
 **Language / 語言:** [English](README.md) | 繁體中文 | [简体中文](README.zh-CN.md)
 
-適用於 [Clash Verge Rev](https://github.com/clash-verge-rev/clash-verge-rev) 的 [mihomo (Clash.Meta)](https://github.com/MetaCubeX/mihomo) 設定範本，透過 [IPRoyal](https://iproyal.com) 住宅代理對 Twitter/X 及境外 AI 服務進行分流，其餘流量一律直連。
+適用於 [Clash Verge Rev](https://github.com/clash-verge-rev/clash-verge-rev) 的 [mihomo (Clash.Meta)](https://github.com/MetaCubeX/mihomo) 設定範本，透過 [IPRoyal](https://iproyal.com/?r=jackyyyso) 住宅代理對 Twitter/X 及境外 AI 服務進行分流，其餘流量一律直連。
 
 ---
 
@@ -27,7 +27,7 @@
 ## 前置需求
 
 - 已安裝 **[Clash Verge Rev](https://github.com/clash-verge-rev/clash-verge-rev)**
-- 擁有 **[IPRoyal](https://iproyal.com)** 帳號並訂閱住宅代理方案
+- 擁有 **[IPRoyal](https://iproyal.com/?r=jackyyyso)** 帳號並訂閱住宅代理方案
 
 ---
 
@@ -48,7 +48,7 @@ git clone https://github.com/<your-username>/clash-verge-setting.git
 
 ### 步驟二：取得 IPRoyal 憑證
 
-1. 登入 [IPRoyal 控制台](https://iproyal.com)
+1. 登入 [IPRoyal 控制台](https://iproyal.com/?r=jackyyyso)
 2. 前往 **Residential Proxies（住宅代理）→ Proxy List（代理清單）**
 3. 選擇想要的國家／地區
 4. 記錄以下五個資訊：
