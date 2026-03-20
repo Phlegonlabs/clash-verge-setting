@@ -1,0 +1,128 @@
+# mihomo config template
+# policy: only Twitter + overseas AI use proxy, everything else DIRECT
+#
+# ============================================================
+# SETUP INSTRUCTIONS (IPRoyal)
+# ============================================================
+# 1. Log in to your IPRoyal dashboard: https://iproyal.com
+# 2. Go to Residential Proxies -> Proxy List
+# 3. Select your desired location, then export/copy the proxy credentials
+# 4. Fill in the four fields marked with <...> below:
+#    - <IPROYAL_SERVER>   : proxy hostname, e.g. geo.iproyal.com
+#    - <HTTP_PORT>        : HTTP proxy port,   e.g. 12323
+#    - <SOCKS5_PORT>      : SOCKS5 proxy port, e.g. 12324
+#    - <USERNAME>         : your IPRoyal username
+#    - <PASSWORD>         : your IPRoyal password
+# ============================================================
+
+mixed-port: 7890
+allow-lan: false
+mode: rule
+log-level: info
+unified-delay: true
+geodata-mode: true
+ipv6: false
+tcp-concurrent: true
+
+profile:
+  store-selected: true
+  store-fake-ip: true
+
+tun:
+  enable: true
+  stack: mixed
+  auto-route: true
+  auto-detect-interface: true
+  strict-route: true
+  dns-hijack:
+    - any:53
+
+sniffer:
+  enable: true
+  force-dns-mapping: true
+  parse-pure-ip: true
+  override-destination: true
+  sniff:
+    HTTP:
+      ports:
+        - 80
+        - 8080-8880
+    TLS:
+      ports:
+        - 443
+        - 8443
+
+dns:
+  enable: true
+  listen: 127.0.0.1:53
+  ipv6: false
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  fake-ip-filter:
+    - "*.lan"
+    - "*.local"
+    - "*.msftconnecttest.com"
+    - "*.msftncsi.com"
+  default-nameserver:
+    - 223.5.5.5
+    - 1.1.1.1
+  nameserver:
+    - https://dns.alidns.com/dns-query
+  fallback:
+    - https://dns.google/dns-query
+    - https://cloudflare-dns.com/dns-query
+  fallback-filter:
+    geoip: true
+    geoip-code: CN
+
+proxies:
+  - name: IPRoyal-HTTP
+    type: http
+    server: <IPROYAL_SERVER>   # e.g. geo.iproyal.com
+    port: <HTTP_PORT>           # e.g. 12323
+    username: "<USERNAME>"
+    password: "<PASSWORD>"
+
+  - name: IPRoyal-SOCKS5
+    type: socks5
+    server: <IPROYAL_SERVER>   # e.g. geo.iproyal.com
+    port: <SOCKS5_PORT>         # e.g. 12324
+    username: "<USERNAME>"
+    password: "<PASSWORD>"
+    udp: true
+
+proxy-groups:
+  - name: Proxy
+    type: fallback
+    url: http://www.gstatic.com/generate_204
+    interval: 180
+    lazy: true
+    proxies:
+      - IPRoyal-SOCKS5
+      - IPRoyal-HTTP
+
+rules:
+  # Twitter/X -> Proxy
+  - DOMAIN-SUFFIX,twitter.com,Proxy
+  - DOMAIN-SUFFIX,x.com,Proxy
+  - DOMAIN-SUFFIX,twimg.com,Proxy
+  - DOMAIN-SUFFIX,t.co,Proxy
+
+  # Overseas AI -> Proxy
+  - DOMAIN-SUFFIX,openai.com,Proxy
+  - DOMAIN-SUFFIX,chatgpt.com,Proxy
+  - DOMAIN-SUFFIX,ai.com,Proxy
+  - DOMAIN-SUFFIX,oaistatic.com,Proxy
+  - DOMAIN-SUFFIX,oaiusercontent.com,Proxy
+  - DOMAIN-SUFFIX,claude.ai,Proxy
+  - DOMAIN-SUFFIX,claude.com,Proxy
+  - DOMAIN-SUFFIX,anthropic.com,Proxy
+  - DOMAIN-SUFFIX,claudeusercontent.com,Proxy
+  - DOMAIN-SUFFIX,perplexity.ai,Proxy
+  - DOMAIN-SUFFIX,gemini.google.com,Proxy
+  - DOMAIN-SUFFIX,bard.google.com,Proxy
+  - DOMAIN-SUFFIX,copilot.microsoft.com,Proxy
+  - DOMAIN-SUFFIX,withgoogle.com,Proxy
+
+  # default
+  - MATCH,DIRECT
